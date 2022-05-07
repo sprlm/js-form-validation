@@ -101,14 +101,16 @@ function showZipCodeError() {
 
 function showPasswordError() {
   if (password.validity.valueMissing) {
-    passwordError.textContent = '* Please enter a password,';
+    passwordError.textContent = '* Please enter a password.';
   } else if (password.validity.tooShort) {
-    passwordError.textContent = `* Password should be at least ${password.minLength} characters`;
+    passwordError.textContent = `* Password should be at least ${password.minLength} characters.`;
+  } else if (!password.validity.valid) {
+    passwordError.textContent = '* Password must contain at least 1 number and 1 uppercase and lowercase letter.';
   }
 }
 
 function showConfirmPwError() {
   if (password.value !== confirmPw.value) {
-    confirmPwError.textContent = '* Both passwords must match..';
+    confirmPwError.textContent = '* Both passwords must match.';
   } 
 }
